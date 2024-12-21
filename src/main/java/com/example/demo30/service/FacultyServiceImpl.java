@@ -1,6 +1,7 @@
 package com.example.demo30.service;
 
 import com.example.demo30.model.Faculty;
+import com.example.demo30.model.exception.FacultyNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -52,7 +53,7 @@ public class FacultyServiceImpl  implements FacultyService {
 
     private void checkFacultyExistExist(Long id) {
         if (!repository.containsKey(id)) {
-            throw new RuntimeException();
+            throw new FacultyNotFoundException(id);
         }
 
     }

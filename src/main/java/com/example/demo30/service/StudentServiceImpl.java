@@ -1,6 +1,7 @@
 package com.example.demo30.service;
 
 import com.example.demo30.model.Student;
+import com.example.demo30.model.exception.StudentNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -53,7 +54,7 @@ public class StudentServiceImpl implements StudentService {
 
     private void checkStudentExist(Long id) {
        if (!repository.containsKey(id)) {
-           throw new RuntimeException();
+           throw new StudentNotFoundException(id);
         }
     }
 }
