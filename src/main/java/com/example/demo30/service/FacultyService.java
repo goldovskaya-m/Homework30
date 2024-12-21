@@ -1,7 +1,6 @@
 package com.example.demo30.service;
 
 import com.example.demo30.model.Faculty;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
@@ -14,5 +13,7 @@ public interface FacultyService {
 
     Faculty findById(Long id);
 
-    Collection<Faculty> FindAll();
+    Collection<Faculty> findAll();
+
+    Collection<Faculty> findByColor(String color);
 }

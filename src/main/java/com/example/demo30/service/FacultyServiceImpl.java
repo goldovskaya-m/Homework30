@@ -1,15 +1,14 @@
 package com.example.demo30.service;
 
 import com.example.demo30.model.Faculty;
+import com.example.demo30.model.Student;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 @Service
-public class FacultyServiceImpl implements FacultyService {
+public class FacultyServiceImpl  implements FacultyService {
     private final Map<Long, Faculty> repository = new HashMap<>();
     private long counter = 0;
 
@@ -38,9 +37,18 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     @Override
-    public Collection<Faculty> FindAll() {
+    public Collection<Faculty> findAll() {
         return Collections.unmodifiableCollection
                 (repository.values());
+    }
+
+
+
+    @Override
+    public  Collection<Faculty> findByColor(String color) {
+        return repository.values().stream()
+                .filter(st -> Objects.equals(st.getColor(),color))
+                .toList();
     }
 
     private void checkFacultyExistExist(Long id) {

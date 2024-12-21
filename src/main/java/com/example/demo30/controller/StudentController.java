@@ -32,10 +32,12 @@ public class StudentController {
     public Student findById(@PathVariable("id") Long id) {
         return studentService.findById(id);
     }
+
     @GetMapping("/get/all")
     public Collection<Student> FindAll() {
         return studentService.FindAll();
     }
+
     @GetMapping("/get/by-age")
     public Collection<Student> FindByAge(@RequestParam("age")int age) {
         return studentService.FindByAge(age);
