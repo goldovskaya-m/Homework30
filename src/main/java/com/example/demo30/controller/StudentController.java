@@ -26,7 +26,7 @@ public class StudentController {
     }
     @DeleteMapping("/{id}/remove")
     public Student deleteById(@PathVariable("id") Long id){
-        return studentService.deletById(id);
+        return studentService.deleteById(id);
     }
     @GetMapping("/{id}/get")
     public Student findById(@PathVariable("id") Long id) {
@@ -34,6 +34,11 @@ public class StudentController {
     }
     @GetMapping("/get/all")
     public Collection<Student> FindAll() {
-        return null;
+        return studentService.FindAll();
     }
+    @GetMapping("/get/by-age")
+    public Collection<Student> FindByAge(@RequestParam("age")int age) {
+        return studentService.FindByAge(age);
+    }
+
 }

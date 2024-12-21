@@ -1,6 +1,7 @@
 package com.example.demo30.controller;
 
 import com.example.demo30.model.Faculty;
+import com.example.demo30.model.Student;
 import com.example.demo30.service.FacultyService;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,4 +43,11 @@ public class FacultyController {
     public Collection<Faculty> FindAll() {
         return facultyService.FindAll();
     }
+
+
+    @GetMapping("/get/all")
+    public Collection<Faculty> FindByAge(@RequestParam("age") int age) {
+        return facultyService.FindAll();
+    }
 }
+

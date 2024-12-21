@@ -3,10 +3,8 @@ package com.example.demo30.service;
 import com.example.demo30.model.Student;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
+
 @Service
 public class StudentServiceImpl implements StudentService {
     private final Map<Long, Student> repository = new HashMap<>();
@@ -27,8 +25,9 @@ public class StudentServiceImpl implements StudentService {
         return repository.put(id, student);
     }
 
+
     @Override
-    public Student deletById(Long id) {
+    public Student deleteById(Long id) {
         checkStudentExist(id);
         return repository.remove(id);
 
@@ -43,6 +42,13 @@ public class StudentServiceImpl implements StudentService {
     public Collection<Student> FindAll() {
         return Collections.unmodifiableCollection
                 (repository.values());
+    }
+
+
+
+    @Override
+    public  Collection<Student> FindByAge(int age) {
+        return repository.values().stream().filter(st -> st.getAge() == age).toList();
     }
 
     private void checkStudentExist(Long id) {
